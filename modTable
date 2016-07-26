@@ -1,0 +1,136 @@
+#!/usr/bin/python2.7
+
+# modTable - fun program to print the addition and multiplication
+# tables for the set of Integers Z % (m * Z) (where Z is the
+# set of integers and m is an integer >= 2).  Z % (p * Z) is a 
+# finite field when p is prime.
+#
+# Copyright (c) 2008-2016, James Philip Rowell,
+# Orange Imagination & Concepts, Inc.
+# www.orangeimagination.com
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#   - Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#
+#   - Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in
+#     the documentation and/or other materials provided with the
+#     distribution.
+#
+#   - Neither the name of "Orange Imagination & Concepts, Inc."  nor the
+#     names of its contributors may be used to endorse or promote
+#     products derived from this software without specific prior written
+#     permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+# HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+import re
+import argparse
+import os
+import sys
+import subprocess
+import seqLister
+import textwrap
+import math
+import time
+from operator import itemgetter
+
+def main():
+
+    # Redefine the exception handling routine so that it does NOT
+    # do a trace dump if the user types ^C while lsseq is running.
+    #
+    old_excepthook = sys.excepthook
+    def new_hook(exceptionType, value, traceback):
+        if exceptionType != KeyboardInterrupt and exceptionType != IOError:
+            old_excepthook(exceptionType, value, traceback)
+        else:
+            pass
+    sys.excepthook = new_hook
+
+    p = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=textwrap.dedent('''\
+	    fun program to print the addition and multiplication
+	    tables for the set of Integers Z % (m * Z) (where Z is the
+	    set of integers and m is an integer >= 2).  Z % (p * Z) is a
+	    finite field when p is prime.
+            '''),
+        usage="%(prog)s <m>")
+
+    p.add_argument("--version", action="version", version="1.000")
+
+    p.add_argument("m", metavar="m", type=int, nargs=1,
+	help="the divisor for getting the modulus \
+	of Z/m*Z (where Z is the set of integers)")
+
+    args = p.parse_args()
+
+    modBase = args.m[0]
+
+    if modBase <= 1 :
+        print >> sys.stderr, os.path.basename(sys.argv[0]) + \
+            ": error: the divisor 'm' must be greater than or equal to 2"
+        sys.exit(0)
+
+    i = 0
+
+    print "Z mod (" + str(modBase) + "*Z)"
+    outputLine   = ' + | '
+    dividingLine = '-----'
+    while i < modBase :
+	outputLine   += "%2d " % i
+	dividingLine += "---"
+	i += 1
+    print outputLine
+    print dividingLine
+
+    i = 0
+    j = 0
+    while i < modBase :
+	outputLine = "%2d | " % i
+	while j < modBase :
+	    outputLine += "%2d " % ((i + j) % modBase)
+	    j += 1
+	print outputLine
+	i += 1
+	j = 0
+
+    print ""
+    outputLine   = ' * | '
+    dividingLine = '-----'
+    i = 0
+    j = 0
+    while i < modBase :
+	outputLine   += "%2d " % i
+	dividingLine += "---"
+	i += 1
+    print outputLine
+    print dividingLine
+    i = 0
+    while i < modBase :
+	outputLine = "%2d | " % i
+	while j < modBase :
+	    outputLine += "%2d " % ((i * j) % modBase)
+	    j += 1
+	print outputLine
+	i += 1
+	j = 0
+
+if __name__ == '__main__':
+    main()
