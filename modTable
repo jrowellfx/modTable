@@ -53,7 +53,7 @@ from operator import itemgetter
 def main():
 
     # Redefine the exception handling routine so that it does NOT
-    # do a trace dump if the user types ^C while lsseq is running.
+    # do a trace dump if the user types ^C while the comment is running.
     #
     old_excepthook = sys.excepthook
     def new_hook(exceptionType, value, traceback):
