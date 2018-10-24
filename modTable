@@ -5,9 +5,9 @@
 # set of integers and m is an integer >= 2).  Z % (p * Z) is a 
 # finite field when p is prime.
 #
-# Copyright (c) 2008-2016, James Philip Rowell,
-# Orange Imagination & Concepts, Inc.
-# www.orangeimagination.com
+# Copyright (c) 2008-2018, James Philip Rowell,
+# Alpha Eleven Incorporated
+# www.alpha-eleven.com
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -22,10 +22,9 @@
 #     the documentation and/or other materials provided with the
 #     distribution.
 #
-#   - Neither the name of "Orange Imagination & Concepts, Inc."  nor the
-#     names of its contributors may be used to endorse or promote
-#     products derived from this software without specific prior written
-#     permission.
+#   - Neither the name of "Alpha Eleven, Inc."  nor the names of its
+#     contributors may be used to endorse or promote products derived
+#     from this software without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
