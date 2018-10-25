@@ -5,6 +5,8 @@
 # set of integers and m is an integer >= 2).  Z % (p * Z) is a 
 # finite field when p is prime.
 #
+# BSD 3-Clause License
+# 
 # Copyright (c) 2008-2018, James Philip Rowell,
 # Alpha Eleven Incorporated
 # www.alpha-eleven.com
