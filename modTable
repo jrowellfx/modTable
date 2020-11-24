@@ -2,11 +2,11 @@
 
 # modTable - fun program to print the addition and multiplication
 # tables for the set of Integers Z % (m * Z) (where Z is the
-# set of integers and m is an integer >= 2).  Z % (p * Z) is a 
+# set of integers and m is an integer >= 2).  Z % (p * Z) is a
 # finite field when p is prime.
 #
 # BSD 3-Clause License
-# 
+#
 # Copyright (c) 2008-2020, James Philip Rowell,
 # Alpha Eleven Incorporated
 # www.alpha-eleven.com
@@ -67,18 +67,18 @@ def main():
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
-	    fun program to print the addition and multiplication
-	    tables for the set of Integers Z % (m * Z) (where Z is the
-	    set of integers and m is an integer >= 2).  Z % (p * Z) is a
-	    finite field when p is prime.
+            fun program to print the addition and multiplication
+            tables for the set of Integers Z % (m * Z) (where Z is the
+            set of integers and m is an integer >= 2).  Z % (p * Z) is a
+            finite field when p is prime.
             '''),
         usage="%(prog)s <m>")
 
     p.add_argument("--version", action="version", version="1.000")
 
     p.add_argument("m", metavar="m", type=int, nargs=1,
-	help="the divisor for getting the modulus \
-	of Z/m*Z (where Z is the set of integers)")
+        help="the divisor for getting the modulus \
+        of Z/m*Z (where Z is the set of integers)")
 
     args = p.parse_args()
 
@@ -95,22 +95,22 @@ def main():
     outputLine   = ' + | '
     dividingLine = '-----'
     while i < modBase :
-	outputLine   += "%2d " % i
-	dividingLine += "---"
-	i += 1
+        outputLine   += "%2d " % i
+        dividingLine += "---"
+        i += 1
     print outputLine
     print dividingLine
 
     i = 0
     j = 0
     while i < modBase :
-	outputLine = "%2d | " % i
-	while j < modBase :
-	    outputLine += "%2d " % ((i + j) % modBase)
-	    j += 1
-	print outputLine
-	i += 1
-	j = 0
+        outputLine = "%2d | " % i
+        while j < modBase :
+            outputLine += "%2d " % ((i + j) % modBase)
+            j += 1
+        print outputLine
+        i += 1
+        j = 0
 
     print ""
     outputLine   = ' * | '
@@ -118,20 +118,20 @@ def main():
     i = 0
     j = 0
     while i < modBase :
-	outputLine   += "%2d " % i
-	dividingLine += "---"
-	i += 1
+        outputLine   += "%2d " % i
+        dividingLine += "---"
+        i += 1
     print outputLine
     print dividingLine
     i = 0
     while i < modBase :
-	outputLine = "%2d | " % i
-	while j < modBase :
-	    outputLine += "%2d " % ((i * j) % modBase)
-	    j += 1
-	print outputLine
-	i += 1
-	j = 0
+        outputLine = "%2d | " % i
+        while j < modBase :
+            outputLine += "%2d " % ((i * j) % modBase)
+            j += 1
+        print outputLine
+        i += 1
+        j = 0
 
 if __name__ == '__main__':
     main()
