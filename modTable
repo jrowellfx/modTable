@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python3
 
 # 3-Clause BSD License
 # 
@@ -86,21 +86,21 @@ def main():
     modBase = args.m[0]
 
     if modBase <= 1 :
-        print >> sys.stderr, os.path.basename(sys.argv[0]) + \
-            ": error: the divisor 'm' must be greater than or equal to 2"
+        print(os.path.basename(sys.argv[0]) + \
+            ": error: the divisor 'm' must be greater than or equal to 2", file=sys.stderr)
         sys.exit(1)
 
     i = 0
 
-    print "Z mod (" + str(modBase) + "*Z)"
+    print("Z mod (" + str(modBase) + "*Z)")
     outputLine   = ' + | '
     dividingLine = '-----'
     while i < modBase :
         outputLine   += "%2d " % i
         dividingLine += "---"
         i += 1
-    print outputLine
-    print dividingLine
+    print(outputLine)
+    print(dividingLine)
 
     i = 0
     j = 0
@@ -109,11 +109,11 @@ def main():
         while j < modBase :
             outputLine += "%2d " % ((i + j) % modBase)
             j += 1
-        print outputLine
+        print(outputLine)
         i += 1
         j = 0
 
-    print ""
+    print("")
     outputLine   = ' * | '
     dividingLine = '-----'
     i = 0
@@ -122,15 +122,15 @@ def main():
         outputLine   += "%2d " % i
         dividingLine += "---"
         i += 1
-    print outputLine
-    print dividingLine
+    print(outputLine)
+    print(dividingLine)
     i = 0
     while i < modBase :
         outputLine = "%2d | " % i
         while j < modBase :
             outputLine += "%2d " % ((i * j) % modBase)
             j += 1
-        print outputLine
+        print(outputLine)
         i += 1
         j = 0
 
