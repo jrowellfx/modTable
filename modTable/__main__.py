@@ -36,10 +36,9 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# modTable - fun program to print the addition and multiplication
-# tables for the set of Integers Z % (m * Z) (where Z is the
-# set of integers and m is an integer >= 2).  Z % (p * Z) is a
-# finite field when p is prime.
+# modTable - a fun program to print the addition and multiplication tables for
+# the ring of integers modulo n, denoted Z/nZ. The ring of integers
+# modulo n is a field, if and only if n is prime.
 
 import re
 import argparse
@@ -51,6 +50,8 @@ import textwrap
 import math
 import time
 from operator import itemgetter
+
+VERSION='1.1.0'
 
 def main():
 
@@ -68,31 +69,32 @@ def main():
     p = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
-            fun program to print the addition and multiplication
-            tables for the set of Integers Z % (m * Z) (where Z is the
-            set of integers and m is an integer >= 2).  Z % (p * Z) is a
-            finite field when p is prime.
+            fun program to print the addition and
+            multiplication tables for
+            the ring of integers modulo n,
+            denoted Z/nZ. The ring of integers
+            modulo n is a field, if and only if n is prime.
             '''),
         usage="%(prog)s <m>")
 
-    p.add_argument("--version", action="version", version="1.000")
+    p.add_argument("--version", action="version", version=VERSION)
 
-    p.add_argument("m", metavar="m", type=int, nargs=1,
-        help="the divisor for getting the modulus \
-        of Z/m*Z (where Z is the set of integers)")
+    p.add_argument("n", metavar="n", type=int, nargs=1,
+        help="the divisor for the modulus \
+        of Z/n*Z, where Z is the set of integers.")
 
     args = p.parse_args()
 
-    modBase = args.m[0]
+    modBase = args.n[0]
 
     if modBase <= 1 :
         print(os.path.basename(sys.argv[0]) + \
-            ": error: the divisor 'm' must be greater than or equal to 2", file=sys.stderr)
+            ": error: the divisor 'n' must be greater than or equal to 2", file=sys.stderr)
         sys.exit(1)
 
     i = 0
 
-    print("Z/" + str(modBase) + "Z")
+    print(u"\u2124" + "/" + str(modBase) + u"\u2124")
     outputLine   = ' + | '
     dividingLine = '-----'
     while i < modBase :
