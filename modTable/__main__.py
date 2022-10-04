@@ -92,7 +92,7 @@ def main():
 
     i = 0
 
-    print("Z mod (" + str(modBase) + "*Z)")
+    print("Z/" + str(modBase) + "Z")
     outputLine   = ' + | '
     dividingLine = '-----'
     while i < modBase :

@@ -1,3 +1,0 @@
-modTable - fun program to print the addition and multiplication tables for
-the set of Integers Z % (m * Z) (where Z is the set of integers and m is an
-integer >= 2).
