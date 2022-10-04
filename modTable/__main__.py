@@ -36,7 +36,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# modTable - a fun program to print the addition and multiplication tables for
+# modTable - prints the addition and multiplication tables for
 # the ring of integers modulo n, denoted Z/nZ. The ring of integers
 # modulo n is a field, if and only if n is prime.
 
@@ -67,21 +67,16 @@ def main():
     sys.excepthook = new_hook
 
     p = argparse.ArgumentParser(
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        description=textwrap.dedent('''\
-            fun program to print the addition and
-            multiplication tables for
-            the ring of integers modulo n,
-            denoted Z/nZ. The ring of integers
-            modulo n is a field, if and only if n is prime.
-            '''),
-        usage="%(prog)s <m>")
+            prog="modTable",
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+            description="Prints the addition and multiplication tables for \
+            the ring of integers modulo n, denoted " + u"\u2124" + "/n" + u"\u2124" + 
+            ". The ring of integers modulo n is a field if and only if n is prime.")
 
     p.add_argument("--version", action="version", version=VERSION)
 
     p.add_argument("n", metavar="n", type=int, nargs=1,
-        help="the divisor for the modulus \
-        of Z/n*Z, where Z is the set of integers.")
+        help="the divisor for the modulus of " + u"\u2124" + "/n" + u"\u2124")
 
     args = p.parse_args()
 
