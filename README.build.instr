@@ -38,15 +38,8 @@ python3 -m twine upload --repository pypi dist/modTable-1.x.x*
 su -
 cd /usr/local/venv
 bin/pip install modTable --upgrade
+ln -s /usr/local/venv/bin/modTable /usr/local/bin/modTable
 exit
 modTable --version
-ln -s /usr/local/venv/bin/modTable /usr/local/bin/modTable
-
-
-# Test installation.
-#
-cd tests
-./test_renum
-diff test_renum.out test_renum.out.new
 
 # Make a new tagged release on github
