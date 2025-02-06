@@ -45,13 +45,16 @@ import argparse
 import os
 import sys
 import subprocess
-import seqLister
 import textwrap
 import math
 import time
 from operator import itemgetter
 
-VERSION='1.1.0'
+# MAJOR version for incompatible API changes
+# MINOR version for added functionality in a backwards compatible manner
+# PATCH version for backwards compatible bug fixes
+#
+VERSION='2.0.0'      # Semantic Versioning 2.0.0
 
 def main():
 

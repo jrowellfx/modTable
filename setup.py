@@ -8,8 +8,8 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name            = 'modTable',
-    version         = '1.1.0',
-    description='Prints addition and multiplication tables for Z mod m*Z',
+    version         = '2.0.0',
+    description='Prints addition and multiplication tables for Z mod n*Z',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url             = 'https://github.com/jrowellfx/modTable',
@@ -30,7 +30,7 @@ setup(
 
     entry_points = {
         'console_scripts': [
-            'modTable = modTable.__main__:main',
+            'mod-table = modTable.__main__:main',
         ]
     }
 )
