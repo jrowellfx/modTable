@@ -62,7 +62,9 @@ python3 -m build
 #
 # or FOR REAL on pypi
 #
-python3 -m twine upload --repository pypi dist/mod[tT]Table-x.x.x*
+python3 -m twine upload --repository pypi \
+    dist/modTable-x.x.x-py3-none-any.whl \
+    dist/modtable-x.x.x.tar.gz
 
 # NOTE! Sometimes you have to wait 5 minutes or so for
 # the update to take effect on the pipy server before the install

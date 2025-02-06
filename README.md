@@ -8,11 +8,6 @@ the ring of integers modulo n, denoted
 ## Installing `mod-table`
 
 ```
-    python3 -m pip install modTable
-```
-If you already have `mod-table` installed, upgrade to newer versions like this:
-
-```
     python3 -m pip install modTable --upgrade
 ```
 It's recommended to install into a local `venv`, or if installing systemwide
