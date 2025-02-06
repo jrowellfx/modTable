@@ -54,7 +54,7 @@ from operator import itemgetter
 # MINOR version for added functionality in a backwards compatible manner
 # PATCH version for backwards compatible bug fixes
 #
-VERSION='2.0.0'      # Semantic Versioning 2.0.0
+VERSION='2.0.1'      # Semantic Versioning 2.0.0
 
 def main():
 
@@ -70,7 +70,7 @@ def main():
     sys.excepthook = new_hook
 
     p = argparse.ArgumentParser(
-            prog="modTable",
+            prog="mod-table",
             formatter_class=argparse.ArgumentDefaultsHelpFormatter,
             description="Prints the addition and multiplication tables for \
             the ring of integers modulo n, denoted " + u"\u2124" + "/n" + u"\u2124" + 
